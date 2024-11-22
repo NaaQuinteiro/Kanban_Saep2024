@@ -1,0 +1,26 @@
+Como rodar o back:
+Entrar na pasta do projeto
+*Ter instalado o SQLite3 Editor no vscode*
+
+Criar a venv 
+py -m venv venv 
+
+Ativar a venv 
+cd venv\Scripts\activate
+
+Instalar as dependências
+pip install -r requirements.txt
+
+Rodar:
+py manage.py runserver
+
+
+Como rodar o front:
+Entrar na pasta do projeto 
+
+Instalar a node 
+npm i
+
+Sartar o projeto 
+npm start
+
