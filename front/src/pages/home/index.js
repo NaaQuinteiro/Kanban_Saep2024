@@ -101,64 +101,66 @@ const Home = () => {
 
             <h2 className={estilos.subtitle}>Tarefas</h2>
 
-            <div className={estilos.gridContainer}>
-                {tasks.map((task) => (
-                    <div key={task.id} className={`${estilos.taskCard} ${estilos[task.status]}`}>
-                        <h3 className={estilos.titleCard}>{task.descricao}</h3>
-                        <p className={estilos.text}><strong>Setor:</strong> {task.setor}</p>
-                        <p className={estilos.text}><strong>Prioridade:</strong> {task.prioridade}</p>
-                        <p className={estilos.text}><strong>Usuário:</strong> {getUserNameById(task.usuario)}</p> {/* Exibe o nome do usuário */}
-                        <p className={estilos.text}><strong>Data de Cadastro:</strong> {new Date(task.data_cadastro).toLocaleDateString()}</p>
+            {tasks.length === 0 ? (
+                <div className={estilos.containerNotResults}>
+                    <p className={estilos.noTasksMessage}>Não há tarefas no momento.<br />👻👻👻</p>
+                    <Link className={estilos.link} to="/cadastrar-tarefas">Click aqui para adicionar uma nova tarefa!</Link>
+                </div>
+            ) : (
+                <div className={estilos.gridContainer}>
+                    {tasks.map((task) => (
+                        <div key={task.id} className={`${estilos.taskCard} ${estilos[task.status]}`}>
+                            <h3 className={estilos.titleCard}>{task.descricao}</h3>
+                            <p className={estilos.text}><strong>Setor:</strong> {task.setor}</p>
+                            <p className={estilos.text}><strong>Prioridade:</strong> {task.prioridade}</p>
+                            <p className={estilos.text}><strong>Usuário:</strong> {getUserNameById(task.usuario)}</p> {/* Exibe o nome do usuário */}
+                            <p className={estilos.text}><strong>Data de Cadastro:</strong> {new Date(task.data_cadastro).toLocaleDateString()}</p>
 
-                        {/* Status editável */}
-                        <div className={estilos.statusContainer}>
-                            <label className={estilos.label}><strong>Status:</strong></label>
-                            <select
-                                value={task.status} // Exibe o status atual da tarefa
-                                onChange={(e) => {
-                                    const newStatus = e.target.value;
-                                    setTasks(prevTasks =>
-                                        prevTasks.map(t =>
-                                            t.id === task.id ? { ...t, status: newStatus } : t
-                                        )
-                                    );
-                                }}
-                                className={estilos.statusDropdown}
-                            >
-                                {statusOptions.map(option => (
-                                    <option key={option.value} value={option.value}>
-                                        {option.label}
-                                    </option>
-                                ))}
-                            </select>
+                            {/* Status editável */}
+                            <div className={estilos.statusContainer}>
+                                <label className={estilos.label}><strong>Status:</strong></label>
+                                <select
+                                    value={task.status} // Exibe o status atual da tarefa
+                                    onChange={(e) => {
+                                        const newStatus = e.target.value;
+                                        setTasks(prevTasks =>
+                                            prevTasks.map(t =>
+                                                t.id === task.id ? { ...t, status: newStatus } : t
+                                            )
+                                        );
+                                    }}
+                                    className={estilos.statusDropdown}
+                                >
+                                    {statusOptions.map(option => (
+                                        <option key={option.value} value={option.value}>
+                                            {option.label}
+                                        </option>
+                                    ))}
+                                </select>
 
-                            <button
-                                onClick={() => handleStatusChange(task.id, task.status)} // Usa o status da tarefa
-                                className={estilos.updateStatus}>
-                                Alterar status
-                            </button>
-                        </div>
+                                <button
+                                    onClick={() => handleStatusChange(task.id, task.status)} // Usa o status da tarefa
+                                    className={estilos.updateStatus}>
+                                    Alterar status
+                                </button>
+                            </div>
 
-                        <div className={estilos.buttonsContainer}>
-                            <button onClick={() => navigate(`/editar-tarefa/${task.id}`)} // Navega para a página de edição
-                                className={estilos.updateButton}>
+                            <div className={estilos.buttonsContainer}>
+                                <button onClick={() => navigate(`/editar-tarefa/${task.id}`)} // Navega para a página de edição
+                                    className={estilos.updateButton}>
                                     Editar
-                            </button>
-                            <button onClick={() => handleDeleteTask(task.id)} // Exclui a tarefa
-                                className={estilos.deleteButton}>
+                                </button>
+                                <button onClick={() => handleDeleteTask(task.id)} // Exclui a tarefa
+                                    className={estilos.deleteButton}>
                                     Excluir
-                            </button>
+                                </button>
+                            </div>
                         </div>
-                        
-                    </div>
-                ))}
-            </div>
+                    ))}
+                </div>
+            )}
         </div>
     );
 };
-
-const styles = {
-
-}
 
 export default Home;

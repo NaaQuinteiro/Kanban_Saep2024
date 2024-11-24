@@ -167,3 +167,45 @@ button {
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
+
+.containerNotResults{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.noTasksMessage {
+  font-size: 1.2em;
+  color: #888;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.link {
+  width: auto;
+  padding: 10px;
+  font-size: 1em;
+  text-decoration: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Adicionando transição para a cor do texto */
+  margin-top: 20px;
+  border-radius: 15px;
+  background: transparent;
+  border: solid 1px #ef476f;
+  color: transparent; /* Inicialmente, o texto é transparente */
+  background: linear-gradient(90deg, #ef476f 27%, rgba(0, 212, 255, 1) 87%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.link:hover {
+  background: linear-gradient(90deg, #ef476f 27%, rgba(0, 212, 255, 1) 87%); /* Mantém o gradiente de fundo */
+  color: #f5f5f5; /* Muda a cor do texto para branco */
+  -webkit-background-clip: none; /* Remove o background-clip para que o gradiente não afete o texto no hover */
+  -webkit-text-fill-color: #f5f5f5; /* Define a cor do texto para branco */
+  transition: all 0.2s ease-in-out; /* Transição suave para todas as propriedades */
+  border:none
+}

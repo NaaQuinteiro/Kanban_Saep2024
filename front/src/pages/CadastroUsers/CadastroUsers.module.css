@@ -76,25 +76,25 @@
    justify-content: center;
  }
 
-
-.buttonSubmit{
+ .buttonSubmit {
   border: none;
-  margin-top:20px;
-
+  margin-top: 20px;
   width: 50%;
   border-radius: 15px;
-
-  background: linear-gradient(90deg, #ef476f 27%, rgba(0,212,255,1) 87%);
-
-  color: #f5f5f5;
+  background: linear-gradient(90deg, #ef476f 27%, rgba(0, 212, 255, 1) 87%);
+  color: transparent; /* Inicialmente, o texto é transparente */
   transition: all 0.2s ease-in-out; /* Transição suave em todas as propriedades */
-}
-.buttonSubmit:hover{
-  background: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; /* Aplica o gradiente ao texto */
   border: solid 1px #ef476f;
-  background: linear-gradient(90deg, #ef476f 27%, rgba(0,212,255,1) 87%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+}
+
+.buttonSubmit:hover {
+  background: linear-gradient(90deg, #ef476f 27%, rgba(0, 212, 255, 1) 87%); /* Mantém o gradiente de fundo */
+  color: #f5f5f5; /* Muda a cor do texto para branco */
+  -webkit-background-clip: none; /* Remove o background-clip para que o gradiente não afete o texto */
+  -webkit-text-fill-color: #f5f5f5; /* Define a cor do texto para branco */
+  border: none;
 }
 
 .mensagem{
