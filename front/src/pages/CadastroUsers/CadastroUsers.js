@@ -1,14 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-import './styles.css'
+import estilos from './CadastroUsers.module.css'
 import Header from '../../components/Header';
+
+import confetti from 'canvas-confetti'; // Importando a biblioteca de confetes
 
 
 function CadastroUsers() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
-  const [msn, setMsn] = useState('')
+  // Estado para a mensagem
+  const [msn, setMsn] = React.useState('');
+
+  // Função que dispara os confetes
+  const dispararConfetes = () => {
+    confetti({
+      particleCount: 100,    // Quantidade de confetes
+      angle: 90,             // A direção dos confetes
+      spread: 180,           // Espalhamento dos confetes
+      origin: { y: 0.6 },    // Posição de origem dos confetes (um pouco abaixo da parte superior)
+      colors: ['#ff0000', '#00ff00', '#0000ff', '#ffff00'], // Cores dos confetes
+    });
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -18,7 +31,7 @@ function CadastroUsers() {
         email,
       });
       console.log('Usuário cadastrado:', response.data);
-      setMsn('Cadastro concluído com sucesso!!!')
+      setMsn('Cadastro concluído com sucesso')
       setUsername('');
       setEmail('');
     } catch (error) {
@@ -29,41 +42,49 @@ function CadastroUsers() {
     }
   };
 
+   // Usando useEffect para disparar confetes quando 'msn' for atualizado
+   useEffect(() => {
+    if (msn) {
+      dispararConfetes(); // Ativa os confetes quando a mensagem for exibida
+    }
+  }, [msn]);  // O efeito é disparado sempre que 'msn' mudar
+
+
   return (
-    <div className='containner'>
+    <div className={estilos.body}>
 
       <Header></Header>
 
-      <main>
-        <h2>Cadastre um novo usuário</h2>
-        <form onSubmit={handleSubmit}>
-          <div className='teste' style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
-            <label htmlFor="username" style={{ flex: '1', marginRight: '10px' }}>Nome:</label>
-            <input
+      <main className={estilos.main}>
+        <h2 className={estilos.subtitle}>Cadastre um novo usuário</h2>
+        <form onSubmit={handleSubmit} className={estilos.form}>
+
+          <div className={estilos.inputs} >
+            <label className={estilos.label}  htmlFor="username">Nome:</label>
+            <input className={estilos.input} 
               type="text"
               id="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
-              style={{ flex: '2', height: '5px', padding: 10, borderRadius: '7px' }}
             />
           </div>
-          <div className='teste' style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
-            <label htmlFor="email" style={{ flex: '1', marginRight: '10px' }}>Email:</label>
-            <input
+
+          <div className={estilos.inputs} >
+            <label className={estilos.label} htmlFor="email">Email:</label>
+            <input className={estilos.input}
               type="email"
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              style={{ flex: '2', height: '5px', padding: 10, borderRadius: '7px' }}
             />
           </div>
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <button type="submit" className="botao-cadastrar">Cadastrar</button>
+          <div className={estilos.button}>
+            <button type="submit" className={estilos.buttonSubmit}>Cadastrar</button>
           </div>
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <p style={{ color: 'green' }}>{msn}</p>
+          <div className={estilos.mensagem}>
+            <p>{msn}</p>
           </div>
         </form>
       </main>

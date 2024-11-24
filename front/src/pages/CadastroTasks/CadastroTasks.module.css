@@ -1,0 +1,134 @@
+.subtitle{
+  text-align: center;
+  background: linear-gradient(90deg, rgba(9,9,121,1) 27%, rgba(0,212,255,1) 87%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  font-size: 24px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-weight: 500;
+ }
+
+
+.containerForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  margin-bottom: 110px;
+}
+
+
+ .form{
+
+  display: flex;
+  flex-direction: column;
+
+  width: 400px;
+  height: auto;
+
+  background-color: #ffffff;
+  padding: 40px;
+
+  gap: 20px;
+
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+
+  margin-top: 20px;
+ }
+
+ 
+ .inputs{
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+ }
+
+ .label{
+  font-size: 16px;
+  color: rgba(9,9,121,1);
+  font-weight: 500;
+ }
+
+ .input{
+  padding: 10px;
+  border-radius: 15px;
+  border: none;
+
+  background-color: #f5f5f5;
+
+  font-size: 14px;
+
+}
+
+.input:focus{
+  outline: none; /* Remove a borda de foco */
+  border: solid 1px #ef476f;  /* Caso queira remover também a borda */
+}
+
+.textarea {
+  width: 100%;
+  resize: vertical; /* Permite redimensionar apenas para cima/baixo */
+  overflow-x: hidden; /* Oculta qualquer rolagem horizontal */
+  padding: 10px; /* Mesma configuração de padding do input */
+  border-radius: 15px; /* Bordas arredondadas como os inputs */
+  border: none; /* Remove borda padrão */
+  background-color: #f5f5f5; /* Cor de fundo igual ao input */
+  font-size: 14px; /* Fonte igual ao input */
+  box-sizing: border-box; /* Garante que padding e largura sejam consistentes */
+  margin-top: 0; /* Remove margens extras */
+}
+
+.textarea:focus {
+  outline: none; /* Remove a borda de foco */
+  border: solid 1px #ef476f; /* Caso queira uma borda ao focar */
+}
+
+.inputsDrp{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 3 colunas de tamanhos iguais */
+  gap: 20px; /* Espaçamento entre os itens */
+}
+
+.gridItem{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  
+}
+
+.button{
+  display: flex;
+  justify-content: center;
+}
+
+
+.buttonSubmit{
+ border: none;
+ margin-top:20px;
+
+ width: 50%;
+ border-radius: 15px;
+
+ background: linear-gradient(90deg, #ef476f 27%, rgba(0,212,255,1) 87%);
+
+ color: #f5f5f5;
+ transition: all 0.2s ease-in-out; /* Transição suave em todas as propriedades */
+}
+.buttonSubmit:hover{
+ background: transparent;
+ border: solid 1px #ef476f;
+ background: linear-gradient(90deg, #ef476f 27%, rgba(0,212,255,1) 87%);
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+}
+
+.mensagem{
+ display: flex;
+ justify-content: center;
+ align-items: center;
+
+}
