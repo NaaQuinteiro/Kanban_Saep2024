@@ -98,8 +98,10 @@ const Home = () => {
     return (
         <div>
             
-            <Header title={"Gerenciamento de Tarefas"}></Header>
+            <Header title={"Welcome to your task manager"}></Header>
 
+            <h2>Tarefas</h2>
+            
             <div style={styles.gridContainer}>
                 {tasks.map((task) => (
                     <div key={task.id} style={styles.taskCard}>

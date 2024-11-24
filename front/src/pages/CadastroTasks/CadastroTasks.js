@@ -51,9 +51,9 @@ const CadastroTasks = () => {
   return (
     <div>
       
-      <Header title={"Cadastro de Tarefas"}></Header>
+      <Header></Header>
 
-      <h2>Cadastrar Nova Tarefa</h2>
+      <h2>Cadastre uma nova tarefa</h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label>Usuário:</label>

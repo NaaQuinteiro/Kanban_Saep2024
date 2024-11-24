@@ -32,10 +32,10 @@ function CadastroUsers() {
   return (
     <div className='containner'>
 
-      <Header title={"Cadastro de Usuários"}></Header>
+      <Header></Header>
 
       <main>
-        <h2>Cadastro de Usuários</h2>
+        <h2>Cadastre um novo usuário</h2>
         <form onSubmit={handleSubmit}>
           <div className='teste' style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
             <label htmlFor="username" style={{ flex: '1', marginRight: '10px' }}>Nome:</label>

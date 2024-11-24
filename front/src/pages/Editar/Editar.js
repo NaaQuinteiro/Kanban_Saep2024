@@ -80,9 +80,9 @@ const Editar = () => {
 
   return (
     <div>
-      <Header title={"Edição de tarefas"}></Header>
+      <Header></Header>
 
-      <h2>Editar Tarefa</h2>
+      <h2>Edite sua tarefa</h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label>Usuário:</label>

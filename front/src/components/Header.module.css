@@ -1,0 +1,38 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f5f5f5;
+    padding: 0 30px ;
+    color: #000; 
+  }
+
+.img {
+  width: 80px; /* Largura da div */
+  height: 80px; /* Altura da div */
+}
+
+.img img {
+  width: 100%; /* Faz a imagem ocupar toda a largura da div */
+  height: 100%; /* Faz a imagem ocupar toda a altura da div */
+  object-fit: contain; /* Ajusta a imagem para cobrir toda a área, cortando excessos */
+  border-radius: 4px; /* Opcional: adiciona bordas arredondadas */
+}
+
+.nav {
+    display: flex;
+    gap: 30px; /* Espaçamento entre os links */
+}
+
+.link {
+    text-decoration: none;
+    color: #6c757d;
+    font-weight: bold;
+    font-size: 14px;
+  
+}
+
+.link:hover {
+    color: #ef476f; /* Cor ao passar o mouse */
+    transform: scale(1.1); /* Aumenta o tamanho em 1.5 vezes */
+}
