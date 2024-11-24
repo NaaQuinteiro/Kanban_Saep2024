@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import './styles.css';
+import estilos from './index.module.css';
 import Header from '../../components/Header';
 
 // Tela de gerenciamento de tarefas 
@@ -10,9 +10,9 @@ const Home = () => {
     const [usuarios, setUsuarios] = useState([]);  // Lista de usuários
     const [tasks, setTasks] = useState([]);  // Lista de tarefas
     const [statusOptions] = useState([
-        { value: 'a_fazer', label: 'A Fazer' },
-        { value: 'fazendo', label: 'Fazendo' },
-        { value: 'pronto', label: 'Pronto' }
+        { value: 'a_fazer', label: 'To do' },
+        { value: 'fazendo', label: 'In Progress' },
+        { value: 'pronto', label: 'Done' }
     ]);
 
     // Função para buscar os usuários
@@ -97,34 +97,22 @@ const Home = () => {
 
     return (
         <div>
-            
-            <Header title={"Welcome to your task manager"}></Header>
+            <Header></Header>
 
-            <h2>Tarefas</h2>
-            
-            <div style={styles.gridContainer}>
+            <h2 className={estilos.subtitle}>Tarefas</h2>
+
+            <div className={estilos.gridContainer}>
                 {tasks.map((task) => (
-                    <div key={task.id} style={styles.taskCard}>
-                        <h3>{task.descricao}</h3>
-                        <p><strong>Setor:</strong> {task.setor}</p>
-                        <p><strong>Prioridade:</strong> {task.prioridade}</p>
-                        <p><strong>Usuário:</strong> {getUserNameById(task.usuario)}</p> {/* Exibe o nome do usuário */}
-                        <p><strong>Data de Cadastro:</strong> {new Date(task.data_cadastro).toLocaleDateString()}</p>
-                        <button
-                            onClick={() => navigate(`/editar-tarefa/${task.id}`)} // Navega para a página de edição
-                            style={styles.updateButton}
-                        >
-                            Editar
-                        </button>
-                        <button
-                            onClick={() => handleDeleteTask(task.id)} // Exclui a tarefa
-                            style={styles.deleteButton}
-                        >
-                            Excluir
-                        </button>
+                    <div key={task.id} className={`${estilos.taskCard} ${estilos[task.status]}`}>
+                        <h3 className={estilos.titleCard}>{task.descricao}</h3>
+                        <p className={estilos.text}><strong>Setor:</strong> {task.setor}</p>
+                        <p className={estilos.text}><strong>Prioridade:</strong> {task.prioridade}</p>
+                        <p className={estilos.text}><strong>Usuário:</strong> {getUserNameById(task.usuario)}</p> {/* Exibe o nome do usuário */}
+                        <p className={estilos.text}><strong>Data de Cadastro:</strong> {new Date(task.data_cadastro).toLocaleDateString()}</p>
+
                         {/* Status editável */}
-                        <div style={styles.statusContainer}>
-                            <label><strong>Status:</strong></label>
+                        <div className={estilos.statusContainer}>
+                            <label className={estilos.label}><strong>Status:</strong></label>
                             <select
                                 value={task.status} // Exibe o status atual da tarefa
                                 onChange={(e) => {
@@ -135,7 +123,7 @@ const Home = () => {
                                         )
                                     );
                                 }}
-                                style={styles.statusDropdown}
+                                className={estilos.statusDropdown}
                             >
                                 {statusOptions.map(option => (
                                     <option key={option.value} value={option.value}>
@@ -146,11 +134,22 @@ const Home = () => {
 
                             <button
                                 onClick={() => handleStatusChange(task.id, task.status)} // Usa o status da tarefa
-                                style={styles.updateButton}
-                            >
+                                className={estilos.updateStatus}>
                                 Alterar status
                             </button>
                         </div>
+
+                        <div className={estilos.buttonsContainer}>
+                            <button onClick={() => navigate(`/editar-tarefa/${task.id}`)} // Navega para a página de edição
+                                className={estilos.updateButton}>
+                                    Editar
+                            </button>
+                            <button onClick={() => handleDeleteTask(task.id)} // Exclui a tarefa
+                                className={estilos.deleteButton}>
+                                    Excluir
+                            </button>
+                        </div>
+                        
                     </div>
                 ))}
             </div>
@@ -159,45 +158,7 @@ const Home = () => {
 };
 
 const styles = {
-    gridContainer: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-        gap: '20px',
-        padding: '20px',
-    },
-    taskCard: {
-        border: '1px solid #ccc',
-        borderRadius: '8px',
-        padding: '15px',
-        boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-        backgroundColor: '#fff',
-    },
-    statusContainer: {
-        display: 'flex',
-        alignItems: 'center',
-        marginTop: '10px',
-    },
-    statusDropdown: {
-        marginLeft: '10px',
-        marginRight: '10px',
-    },
-    updateButton: {
-        padding: '5px 10px',
-        backgroundColor: '#007bff',
-        color: '#fff',
-        border: 'none',
-        borderRadius: '4px',
-        cursor: 'pointer',
-        marginRight: '5px',
-    },
-    deleteButton: {
-        padding: '5px 10px',
-        backgroundColor: '#dc3545',
-        color: '#fff',
-        border: 'none',
-        borderRadius: '4px',
-        cursor: 'pointer',
-    }
+
 }
 
 export default Home;

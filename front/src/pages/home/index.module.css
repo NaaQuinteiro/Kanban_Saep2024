@@ -1,0 +1,158 @@
+
+.subtitle{
+  text-align: center;
+  color: #ef476f;
+  font-size: 24px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-weight: 500;
+ }
+
+ .gridContainer{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(300px, 1fr));
+  gap: 40px;
+  padding: 30px 60px;
+ }
+
+ .taskCard {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e0e0e0; 
+  border-radius: 4px; 
+  padding: 20px;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2); 
+  position: relative; 
+  transform: rotate(-1deg); 
+  transition: transform 0.3s ease-in-out; /* Suaviza o efeito de transformação */
+}
+
+.taskCard:hover{
+  transform: scale(1.02); /* Aumenta o tamanho em 1.02 vezes */
+  cursor: pointer;
+}
+
+/* Estilo para a fita adesiva  */
+.taskCard::before {
+  content: '';
+  position: absolute;
+  top: -10px; 
+  left: 50%;
+  transform: translateX(-50%) rotate(-5deg); 
+  width: 60px; /* Largura da fita */
+  height: 20px;
+  background: rgba(222, 226, 230, 0.377);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+  border-radius: 2px; 
+  z-index: 1;
+  opacity: 0.9; 
+}
+.a_fazer {
+  background-color: #ff595e; /* Cor para "To do" */
+}
+
+.fazendo {
+  background-color: #ffca3a; /* Cor para "In Progress" */
+}
+
+.pronto {
+  background-color: #8ac926; /* Cor para "Done" */
+}
+.titleCard{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 10px;
+
+  font-weight: 400;
+  font-size: 19px;
+  text-align: center;
+
+  color: #212529;
+
+}
+
+.text{
+  padding: 5px 20px;
+  color: #212529;
+  font-size: 16px;
+}
+
+.statusContainer {
+  display: flex;
+  align-items: center; /* Alinha os itens verticalmente no centro */
+  gap: 10px;
+  padding-right: 20px;
+}
+
+.label{
+  color: #212529;
+  font-size: 16px;
+  padding-left: 20px;
+
+}
+.statusDropdown, .updateStatus {
+  height: 36px; /* Garantir que ambos tenham a mesma altura */
+  padding: 5px 10px;
+  font-size: 14px;
+}
+
+.statusDropdown {
+  width: 250px; /* Largura fixa para o dropdown */
+  margin-top: 15px;
+  border-radius: 10px;
+}
+
+.updateStatus {
+  background-color: #bee9e8;;
+  color: #1982c4;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+
+  font-weight: 500;
+}
+
+.updateStatus:hover {
+  background-color: #e0e0e0; /* Cor do botão ao passar o mouse */
+  color: #1982c4;
+}
+
+.buttonsContainer{
+  display: flex;
+  gap: 10px; /* Espaço entre os botões */
+  justify-content: flex-start; /* Alinha os botões à esquerda (ou use center para centralizar) */
+
+  padding: 10px 20px;
+}
+
+
+.updateButton, .deleteButton {
+  font-size: 14px;
+
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+ 
+  background-color: transparent;
+  border: solid 1px #fff;
+  color: #fff;
+}
+
+.updateButton:hover {
+  background-color: white;
+  color: #212529;
+  border: none;
+}
+
+.deleteButton {
+  border: solid 1px #212529;
+  color: #212529;
+}
+
+.deleteButton:hover {
+  background-color: #ff0000d5; /* Cor do botão Excluir ao passar o mouse */
+  border:none;
+  color: #fff;
+}
+
